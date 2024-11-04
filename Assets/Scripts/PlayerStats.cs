@@ -1,24 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
+using PlayerMovement.Base;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    public FormStats[] forms; 
+    private int currentFormIndex = 0;
+    private SpriteRenderer spriteRenderer;
+    private BaseMovement baseMovement;
 
-    [SerializeField] public float playerHealth; 
-    
-    // Start is called before the first frame update
     void Start()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        baseMovement = GetComponent<BaseMovement>();
+        ApplyForm(forms[currentFormIndex]);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        //Checks for C input prior to initiating SwitchForm function
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            SwitchForm();
+        }
     }
 
+    //Switches forms in the form array (Scriptable objects with pre-determined stats)
+    void SwitchForm()
+    {
+        // Cycle to the next form
+        currentFormIndex = (currentFormIndex + 1) % forms.Length;
+        ApplyForm(forms[currentFormIndex]);
+    }
 
-
+    //Adjusts the sprite and statistics based on the form selected
+    void ApplyForm(FormStats form)
+    {
+        spriteRenderer.sprite = form.sprite;
+        baseMovement.SetMovementStats(form.speed, form.jumpForce);
+    }
 }
+

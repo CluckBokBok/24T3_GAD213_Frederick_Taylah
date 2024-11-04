@@ -330,6 +330,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8658630183321244827, guid: c0b0ce17fe75e2344b8c33cede0610c5, type: 3}
   m_PrefabInstance: {fileID: 7295924919735107672}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &225008489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 225008490}
+  m_Layer: 0
+  m_Name: --FormStats--
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &225008490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225008489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &264321315
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1243,6 +1274,7 @@ GameObject:
   - component: {fileID: 1622025326}
   - component: {fileID: 1622025325}
   - component: {fileID: 1622025328}
+  - component: {fileID: 1622025331}
   - component: {fileID: 1622025329}
   - component: {fileID: 1622025330}
   m_Layer: 0
@@ -1267,7 +1299,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1404,7 +1436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340e237c3a80913418fafc59b9c7e480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
   speed: 3
   jumpForce: 0
   groundLayer:
@@ -1422,7 +1453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea463f8006a79945aad00c7b8598ab1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: 0
   speed: 3
   jumpForce: 4
   groundLayer:
@@ -1432,6 +1462,21 @@ MonoBehaviour:
   staminaDepletionRate: 3
   staminaRechargeRate: 1
   floatingSpeed: 2
+--- !u!114 &1622025331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622025324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f33332b72f9eedb4f92c4dd250dc00e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forms:
+  - {fileID: 11400000, guid: 1759fb2994c295c498ac31446e832008, type: 2}
+  - {fileID: 11400000, guid: 6549b51a822cee541a26f85c5f4d3abe, type: 2}
 --- !u!4 &1637394234 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8658630183321244827, guid: c0b0ce17fe75e2344b8c33cede0610c5, type: 3}
@@ -1739,3 +1784,4 @@ SceneRoots:
   - {fileID: 1427123238}
   - {fileID: 2123113082}
   - {fileID: 267613522}
+  - {fileID: 225008490}

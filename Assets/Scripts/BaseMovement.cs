@@ -6,17 +6,18 @@ namespace PlayerMovement.Base
     public class BaseMovement : MonoBehaviour
     {
         protected Rigidbody2D body;
-        [SerializeField] private float move = 0f;
+        private float move = 0f;
         [SerializeField] private float speed = 3f;
-        [SerializeField] private float jumpForce;
+        [SerializeField] private float jumpForce = 8f;
         [SerializeField] private LayerMask groundLayer;
-        protected bool touchingGround; 
+        protected bool touchingGround;
 
         // Start is called before the first frame update
         void Start()
         {
-
+            body = GetComponent<Rigidbody2D>();
         }
+
 
         // Update is called once per frame
         protected void Update()
@@ -25,27 +26,22 @@ namespace PlayerMovement.Base
             InitiateJumping();
         }
 
-        //Function takes care of forward and backward movement, and ensures all movement stops when no input is detected
+        //Enables forward + backward movement, stops movement if no input is detected. 
         protected void InitiateMovement()
         {
-            
             move = 0f;
 
-            
             if (Input.GetKey(KeyCode.A))
             {
                 move = -1f;
             }
-
             else if (Input.GetKey(KeyCode.D))
             {
                 move = 1f;
             }
 
-            
             body.velocity = new Vector2(move * speed, body.velocity.y);
 
-            
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 speed = 6f;
@@ -56,30 +52,32 @@ namespace PlayerMovement.Base
             }
         }
 
-      
+        //Checks if player is touching the ground before initiating a jump
         protected void InitiateJumping()
         {
-            // Detects if the player is touching the ground and then allows jumping
             if (Input.GetKeyDown(KeyCode.Space) && touchingGround)
             {
-                body.velocity = new Vector2(body.velocity.x, jumpForce = 8f);
+                body.velocity = new Vector2(body.velocity.x, jumpForce);
                 Debug.Log("You are jumping!");
             }
 
             CheckGrounded();
         }
 
+        //A physics overlap that searches for the ground layer mask to ensure player is touching the ground 
         protected void CheckGrounded()
         {
-            // Checks if the player is grounded
             touchingGround = Physics2D.OverlapArea(new Vector2(transform.position.x - 0.5f, transform.position.y - 1f),
-                                               new Vector2(transform.position.x + 0.5f, transform.position.y - 1.1f),
-                                               groundLayer);
+                                                   new Vector2(transform.position.x + 0.5f, transform.position.y - 1.1f),
+                                                   groundLayer);
         }
 
-        private void Awake()
+        // Sets movement statistics based on the form being used by the player
+        public void SetMovementStats(float newSpeed, float newJumpForce)
         {
-            body = GetComponent<Rigidbody2D>();
+            speed = newSpeed;
+            jumpForce = newJumpForce;
         }
     }
 }
+
