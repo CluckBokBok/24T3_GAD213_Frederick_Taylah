@@ -10,5 +10,7 @@ public class FormStats : ScriptableObject
     public float jumpForce;  
     public int attackPower;
     public int health;
+    public string abilityDescription;
+    public Sprite cardSprite; 
 }
 

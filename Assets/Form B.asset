@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9636696e88606a43b70cc8fe244904f, type: 3}
   m_Name: Form B
   m_EditorClassIdentifier: 
-  formName: Deer
+  formName: Wendigo
   sprite: {fileID: 21300000, guid: d69254b08516f3b44b09f1dc96ac9b19, type: 3}
   speed: 10
   jumpForce: 20
   attackPower: 10
   health: 150
+  abilityDescription: Your jump is unparalelled and your body is fairly robust!
+  cardSprite: {fileID: 21300000, guid: cdd9d5e08d0d06144a3fb99e6192d133, type: 3}
