@@ -15,7 +15,9 @@ namespace PlayerMovement.Base
         // Start is called before the first frame update
         void Start()
         {
+            Debug.Log("Body is:" + body + "Before");
             body = GetComponent<Rigidbody2D>();
+            Debug.Log("Body is:" + body + "After");
         }
 
 
